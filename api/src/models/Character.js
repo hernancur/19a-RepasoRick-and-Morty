@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: true
         },
-        specie: {
+        species: {
             type: DataTypes.STRING,
         },
         origen: {

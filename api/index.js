@@ -20,8 +20,12 @@
 const server = require('./src/app.js')
 const { conn } = require('./src/db.js')
 
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+// con FORCE: TRUE se borran y se vuelven a crear todas las tablas al reiniciar el servidor
+// con FORCE: FALSE no se borra nada si ya existe.
+
+// si estoy desarrollando y tengo cosas creadas que necesito, lo dejo en false
+
+conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
     console.log('Listening at 3001') // eslint-disable-line no-console
   })
