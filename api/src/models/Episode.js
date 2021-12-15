@@ -5,23 +5,14 @@ const { DataTypes, UUIDV4, UUID } = require('sequelize')
 module.exports = (sequelize) => {
     sequelize.define('episode', {
         id: {
-            type: DataTypes.UUID,
-            allowNull: false,
-            unique: true,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
+            type: DataTypes.INTEGER,
+            allowNull: false,            
+            primaryKey: true            
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        airDate: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        url: {
-            type: DataTypes.STRING
+                        
         }
+       
     })
 }
