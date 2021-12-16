@@ -35,7 +35,7 @@ const getAll = async (req,res, next) => {
 
 const postCharacter = async (req,res) => {
     
-    const {personaje, epIds} = req.body
+    const {personaje} = req.body
     if(personaje){
         
         try {
