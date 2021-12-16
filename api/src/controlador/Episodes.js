@@ -10,10 +10,9 @@ const { Episode } = require('../db')
         dbEpisodes.forEach(e=>{
             Episode.findOrCreate({where:{ id: e.id, name: e.name }})
         })
-        res.send("se Cargó exitosamente la DB de Episodes")
+        // res.send("se Cargó exitosamente la DB de Episodes")
     })
-    
-    .catch(e=> next(e)) 
+    .catch(e=> console.log(e)) 
        
 }
 

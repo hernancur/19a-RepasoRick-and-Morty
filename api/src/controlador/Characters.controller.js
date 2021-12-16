@@ -35,7 +35,7 @@ const getAll = async (req,res, next) => {
 
 const postCharacter = async (req,res) => {
     
-    const {personaje} = req.body
+    const {personaje, epIds} = req.body
     if(personaje){
         
         try {
@@ -43,8 +43,12 @@ const postCharacter = async (req,res) => {
             let nuevo = await Character.create(personaje)
 
             // falta hacer las relaciones con los episodios
+            let arr = []
+            //                                            x
+            for(let x=0; x<epIds.length; x++){ // [1,3,5,18]
+                arr[x] = await nuevo.addEpisode(epIds[x]) // addEpisode(3)
+            }
             
-
             if(nuevo && arr[0]) res.json({message: "Creado y relacionado correctamente", data: nuevo})
             else res.json({message: "Error, por alguna razon no se pudo crear, fijate mejor"})
 
