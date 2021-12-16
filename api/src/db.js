@@ -3,6 +3,10 @@ const { Sequelize } = require('sequelize')
 const fs = require('fs')
 const path = require('path')
 const { DB_USER, DB_PASSWORD, DB_HOST, DATABASE } = process.env
+// DB_USER=postgres
+// DB_PASSWORD=la pass de cada uno/a
+// DB_HOST=localhost
+// DATABASE=rm
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`, //

@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { Character, Episodes } = require('../db')
+const { Character, Episode } = require('../db')
 
 
 const getAll = async (req,res, next) => {
@@ -8,7 +8,7 @@ const getAll = async (req,res, next) => {
         // pedido a la api
         const pedido = await axios.get('https://rickandmortyapi.com/api/character')
         // pedido a la base de datos
-        const pedidoBaseDatos = await Character.findAll({include: Episodes})
+        const pedidoBaseDatos = await Character.findAll({include: Episode})
         if(pedido || pedidoBaseDatos){
             // este signo de pregunta se llama "optional chaining", pregunta por la parte izquierda, Y SI EXISTE, continua la parte derecha.
             let aux = pedido.data.results?.map(pj => {
@@ -35,17 +35,20 @@ const getAll = async (req,res, next) => {
 
 const postCharacter = async (req,res) => {
     
-    const {personaje} = req.body
+    const {personaje, epIds} = req.body
     if(personaje){
         
         try {
             
             let nuevo = await Character.create(personaje)
 
-            if(nuevo) res.json({message: "Creado correctamente", data: nuevo})
+            // falta hacer las relaciones con los episodios
+            
+
+            if(nuevo && arr[0]) res.json({message: "Creado y relacionado correctamente", data: nuevo})
             else res.json({message: "Error, por alguna razon no se pudo crear, fijate mejor"})
 
-            // falta hacer las relaciones con los episodios, ESTO SE HACE MIERCOLES 15/12/2021
+
 
         } catch (e) {
             res.send(e)
