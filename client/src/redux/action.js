@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const OBTENER_TODOS = "OBTENER TODOS"
 export const RUTA_GET = "http://localhost:3001/character/get"
+export const FILTER = "FILTER"
 
 export function obtener(){
     return async function pedido(dispatch){
@@ -12,6 +13,15 @@ export function obtener(){
         })
     }
 }
+
+export function filtrarSpecie(personajes, filtro){    
+    return function filter(dispatch){
+        dispatch({
+            type: FILTER,
+            payload: {personajes, filtro}
+        })}
+    }
+
 
 /*
 

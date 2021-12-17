@@ -1,11 +1,18 @@
-import './App.css'
-import Cards from './componentes/Cards/Cardss'
+import './App.css';
+import Cards from './componentes/Cards/Cardss';
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+
+
 
 function App() {
   return (
-    <div className='App'>
-      <h1>Hola!</h1>
-      <Cards/>
+    <div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Cards />} />   
+      
+    </Routes>
+    </BrowserRouter>
     </div>
   )
 }
